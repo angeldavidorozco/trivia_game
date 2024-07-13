@@ -182,3 +182,27 @@ h1 {
   height: auto;
   cursor: pointer;
 }
+
+.round-time-bar {
+  width: 100%; /* Adjust as needed */
+}
+
+.round-time-bar div {
+  height: 10px;
+  width: 100%;
+  background: linear-gradient(to bottom, rgb(0, 255, 0), rgb(75, 0, 0));
+  animation: roundtime 15s linear forwards;
+}
+
+@keyframes roundtime {
+  0% {
+    width: 100%;
+  }
+  50%{
+    background: linear-gradient(to bottom, rgb(0, 255, 0), rgb(75, 0, 0));
+  }
+  100%{
+    background: linear-gradient(to bottom, red, rgb(88, 0, 0));
+    width: 0;
+  }
+}
