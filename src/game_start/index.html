@@ -4,13 +4,13 @@
     <title>Game Start</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/LucaCuello/Circular-Countdown-Template@95af10a/css/countdown.css">
-    <script src="../js/game_start.js" defer></script>
+    <script type="module" src="../js/game_start.mjs" defer></script>
   </head>
   <body>
     <div class="game-board">
       <div class="main-board">
         <div class="question-box">
-          <p>
+          <p id="question">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quo
             ut corporis aspernatur at soluta dolorum in recusandae cum adipisci!
             Qui, doloribus? Nemo suscipit tenetur sequi soluta similique tempora
@@ -18,7 +18,7 @@
           </p>
           <div class="round-time-bar" data-style="smooth" >
             <div></div>
-        </div>
+          </div>
         </div>
         <div
         class="countdown-container"
