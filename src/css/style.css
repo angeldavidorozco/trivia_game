@@ -83,14 +83,36 @@ h1 {
   align-items: center;
 }
 
+.loading-screen{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(100% - 330px);
+  height: 100vh;
+  background-color: #124991;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: bolder;
+  color: white;
+  font-style: italic;
+}
+
+.hidden{
+  display: none;
+}
+
 .question-box {
   background-color: rgba(255, 255, 255, 0.589);
+  min-width: 400px;
   width: 80%;
   padding: 20px;
   border-radius: 10px;
   margin-top: 50px;
   margin-bottom: 20px; /* Add margin-bottom to create space between question box and game buttons */
 }
+
 .question-box p {
   font-size: 1.5em;
 }
@@ -107,6 +129,7 @@ h1 {
 }
 .game-button {
   margin: 0 10px;
+  min-width: 100px;
   padding: 15px 20px;
   background-color: #ccc; /* Replace with the desired button background color */
   border: none;
@@ -183,18 +206,23 @@ h1 {
   cursor: pointer;
 }
 
-.round-time-bar {
+.countdown-bar {
   width: 100%; /* Adjust as needed */
 }
 
-.round-time-bar div {
+.countdown-bar div {
   height: 10px;
   width: 100%;
   background: linear-gradient(to bottom, rgb(0, 255, 0), rgb(75, 0, 0));
-  animation: roundtime 15s linear forwards;
+  animation: countdown 15s linear forwards;
 }
 
-@keyframes roundtime {
+.desktop-countdown{
+  width: 300px;
+  height: 300px;
+}
+
+@keyframes countdown {
   0% {
     width: 100%;
   }

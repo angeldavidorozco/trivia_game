@@ -3,36 +3,27 @@
   <head>
     <title>Game Start</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/LucaCuello/Circular-Countdown-Template@95af10a/css/countdown.css">
-    <script type="module" src="../js/game_start.mjs" defer></script>
+    <script type="module" src="../js/game_start.js" defer></script>
   </head>
   <body>
     <div class="game-board">
+      <div class="loading-screen">
+        <p>LOADING...</p>
+      </div>
       <div class="main-board">
         <div class="question-box">
           <p id="question">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quo
-            ut corporis aspernatur at soluta dolorum in recusandae cum adipisci!
-            Qui, doloribus? Nemo suscipit tenetur sequi soluta similique tempora
-            doloribus!
           </p>
-          <div class="round-time-bar" data-style="smooth" >
+          <div id="countdown" class="countdown-bar" data-style="smooth" >
             <div></div>
           </div>
         </div>
-        <div
-        class="countdown-container"
-        data-duration="15"
-        data-transition="linear"
-        data-color="red"
-        data-size="300"
-        data-position="right"
-        ></div>
+        
         <div class="game-buttons">
-          <p class="game-button">something</p>
-          <p class="game-button">Button 2</p>
-          <p class="game-button">Button 3</p>
-          <p class="game-button">Button 4</p>
+          <p class="game-button"></p>
+          <p class="game-button"></p>
+          <p class="game-button"></p>
+          <p class="game-button"></p>
         </div>
       </div>
       <div class="side-bar">
@@ -43,11 +34,10 @@
         </div>
 
         <div class="info-box">
-          <p>Score: 1000</p>
-          <p>Category: Entertainment</p>
+          <p id="session-score">Score: 0</p>
+          <p id="session-category">Category: </p>
         </div>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/gh/LucaCuello/Circular-Countdown-Template@95af10a/js/index.js"></script>
   </body>
 </html>
