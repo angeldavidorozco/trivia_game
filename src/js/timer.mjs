@@ -1,16 +1,18 @@
 class Timer {
   constructor() {
     this.timerId = null;
-    this.count = 0;
+    this.count = 16;
+    this.timerElement = document.getElementById('timer');
   }
 
-  startTimer() {
-    this.count = 0;
+  startTimer(callback) {
+    this.count = 16;
     this.timerId = setInterval(() => {
-      this.count++;
-      console.log(this.count);
-      if (this.count >= 15) {
+      this.count--;
+      this.timerElement.textContent = this.count;
+      if (this.count == 0) {
         this.stopTimer();
+        callback();
       }
     }, 1000);
   }

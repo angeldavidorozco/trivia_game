@@ -1,6 +1,7 @@
 import timerInstance from "./timer.mjs";
 import { setScenario } from "./setScenario.mjs";
-
+import { endGame } from "./game_start.js";
+import { checkAnswer } from "./playerInfo.mjs";
 
 export async function makeRequest() {
     try {
@@ -16,7 +17,7 @@ export async function makeRequest() {
     }
 }
 
-let currentEventListener = function(event) {
+let answerChecker = function(event) {
     return checkAnswer(event.target);
 };
 
@@ -44,10 +45,10 @@ export async function setQuestionAndAnswers(data) {
             button.dataset.correct = 'false';
         }
         // Remove the previous event listener, if it exists
-        button.removeEventListener('click', currentEventListener);
+        button.removeEventListener('click', answerChecker);
 
         // Add the new event listener
-        button.addEventListener('click', currentEventListener);
+        button.addEventListener('click', answerChecker);
     });
 
 }
@@ -62,40 +63,3 @@ export function HideGameBoard(){
     document.querySelector('.main-board').classList.add('hidden');
 }
 
-export async function checkAnswer(button){
-    HideGameBoard();
-    if(button.dataset.correct==='true'){
-        const remainingTime = timerInstance.stopTimer();
-        const score = calculateScore(remainingTime);
-        updateScore(score);
-        await setScenario();
-    }
-    else{
-        timerInstance.stopTimer();
-        removeHeart();
-        await setScenario();
-    }
-}
-
-
-function removeHeart() {
-    const heartIcons = document.querySelectorAll('.heart-icon');
-    const lastHeartIcon = heartIcons[heartIcons.length - 1];
-    if (lastHeartIcon) {
-        lastHeartIcon.remove();
-    }
-}
-
-function calculateScore(remainingTime) {
-    const maxTime = 15; // maximum time is 15 seconds
-    const maxScore = 100;
-    const score = Math.max(0, maxScore * (1 - remainingTime / maxTime));
-    return Math.round(score);
-}
-
-function updateScore(score) {
-    const scoreElement = document.querySelector('#session-score');
-    const currentScore = parseInt(scoreElement.textContent.split(': ')[1]);
-    const newScore = currentScore + score;
-    scoreElement.textContent = `Score: ${newScore}`;
-}
