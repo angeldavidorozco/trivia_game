@@ -1,12 +1,11 @@
-import timerInstance from "./timer.mjs";
-import { setScenario } from "./setScenario.mjs";
-import { endGame } from "./game_start.js";
+
 import { checkAnswer } from "./playerInfo.mjs";
 
 export async function makeRequest() {
+    const link = createFetchLink();
     try {
         const response = await fetch(
-            'https://opentdb.com/api.php?amount=1&difficulty=medium&type=multiple&encode=base64',
+            link,
         );
         const data = await response.json();
         console.log(data);
@@ -15,6 +14,19 @@ export async function makeRequest() {
     catch (error) {
         console.error(error);
     }
+}
+
+function createFetchLink() {
+
+    let category = localStorage.getItem('selectedCategory');
+    let difficulty = localStorage.getItem('selectedDifficulty');
+
+    let link = `https://opentdb.com/api.php?amount=1&difficulty=${difficulty}&type=multiple&encode=base64`;
+    if (category !== 'all') {
+        link += `&category=${category}`;
+    }
+    return link;
+
 }
 
 let answerChecker = function(event) {
@@ -52,14 +64,3 @@ export async function setQuestionAndAnswers(data) {
     });
 
 }
-
-export function ShowGameBoard(){
-    document.querySelector('.loading-screen').classList.add('hidden');
-    document.querySelector('.main-board').classList.remove('hidden');
-}
-
-export function HideGameBoard(){
-    document.querySelector('.loading-screen').classList.remove('hidden');
-    document.querySelector('.main-board').classList.add('hidden');
-}
-

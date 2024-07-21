@@ -1,16 +1,12 @@
 import { setScenario } from "./setScenario.mjs";
 
-
-
 setScenario();
 
-
 export function endGame(){
-    
+
     saveScore();
     
     window.location.href = '../end_game/index.html';
-
 }
 
 

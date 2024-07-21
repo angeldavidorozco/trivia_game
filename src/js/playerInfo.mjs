@@ -1,5 +1,5 @@
 import timerInstance from "./timer.mjs";
-import { HideGameBoard } from './utils.mjs';
+import { HideGameBoard } from './setScenario.mjs';
 import { setScenario } from './setScenario.mjs';
 import { endGame } from './game_start.js';
 
@@ -19,6 +19,7 @@ export async function checkAnswer(button){
 }
 
 export async function incorretAnswer(){
+    HideGameBoard();
     timerInstance.stopTimer();
     removeHeart();
     lives--; // Decrement lives

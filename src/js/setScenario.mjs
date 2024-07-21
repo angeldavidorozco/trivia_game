@@ -1,6 +1,7 @@
-import { setQuestionAndAnswers, makeRequest, ShowGameBoard, HideGameBoard } from './utils.mjs';
+import { setQuestionAndAnswers, makeRequest } from './utils.mjs';
 import timerInstance from "./timer.mjs";
 import { resetAnimation } from './animation.mjs';
+import { incorretAnswer } from './playerInfo.mjs';
 
 let gameRunning = false;
 
@@ -24,7 +25,19 @@ export async function setScenario(){
     resetAnimation();
     ShowGameBoard();
     setQuestionAndAnswers(info);
-    timerInstance.startTimer();
+    timerInstance.startTimer(incorretAnswer);
     
     gameRunning = false;
 }
+
+
+export function ShowGameBoard(){
+    document.querySelector('.loading-screen').classList.add('hidden');
+    document.querySelector('.main-board').classList.remove('hidden');
+}
+
+export function HideGameBoard(){
+    document.querySelector('.loading-screen').classList.remove('hidden');
+    document.querySelector('.main-board').classList.add('hidden');
+}
+
