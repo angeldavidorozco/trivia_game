@@ -2,13 +2,17 @@
 <html>
   <head>
     <title>Game Start</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/mobile.css" />
     <script type="module" src="../js/game_end.mjs" defer></script>
   </head>
   <body>
     <div id="end-game">
-        <p id="final-score"></p>
-        <input type="text" id="player-name" placeholder="Enter your name">
+      <div class="label-combo">
+        <p class="label" id="final-score"></p>
+        <input type="text" class="selectable" id="player-name" placeholder="Enter your name">
+      </div>
         <button class="button" id="save-score">Save Score</button>
         <button class="button" id="return">return without saving</button>
     </div>

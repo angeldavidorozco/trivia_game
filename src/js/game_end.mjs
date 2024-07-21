@@ -32,7 +32,7 @@ function saveScore(){
 
     localStorage.setItem('ls-scores', JSON.stringify(scores));
 
-    returnToHome();
+    window.location.href = '../leaderboards/index.html';
 }
 
 function returnToHome(){

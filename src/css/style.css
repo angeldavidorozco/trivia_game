@@ -15,9 +15,10 @@ body {
 }
 
 .corner-image {
-  width: 500px; /* Adjust as needed */
+  width: 50%;
   height: auto;
   position: absolute;
+  max-width: 400px;
 }
 
 .top-left {
@@ -41,9 +42,14 @@ body {
   right: -10%;
 }
 
+a{
+  text-decoration: none;
+}
+
 h1 {
   text-align: center;
   font-size: 3em;
+  color: white;
 }
 
 .button-container {
@@ -214,7 +220,7 @@ h1 {
   height: 10px;
   width: 100%;
   background: linear-gradient(to bottom, rgb(0, 255, 0), rgb(75, 0, 0));
-  animation: countdown 15s linear forwards;
+  animation: countdown 16s linear forwards;
 }
 
 .desktop-countdown{
@@ -235,7 +241,7 @@ h1 {
   }
 }
 
-#end-game {
+#end-game, #selections {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -243,17 +249,16 @@ h1 {
   height: 100vh;
 }
 
-#final-score {
+.label {
   font-size: 3em;
   text-align: center;
   color: white;
   font-weight: bolder;
   font-style: italic;
-  margin-bottom: 120px;
+
 }
 
-#player-name {
-  margin: 20px 0;
+.selectable {
   font-family: 'Exo 2', sans-serif;
   font-size: 1.2em;
   padding: 10px;
@@ -263,3 +268,21 @@ h1 {
   color: white;
   text-align: center;
 }
+
+.label-combo{
+  margin-bottom: 90px;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#timer{
+  font-size: 10em;
+  color: white;
+  font-weight: bolder;
+  font-style: italic;
+}
+
+
