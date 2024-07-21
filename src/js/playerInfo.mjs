@@ -33,23 +33,43 @@ export async function incorretAnswer(){
 
 
 function removeHeart() {
-    const heartIcons = document.querySelectorAll('.heart-icon');
-    const lastHeartIcon = heartIcons[heartIcons.length - 1];
-    if (lastHeartIcon) {
-        lastHeartIcon.remove();
+    const heartIcons = Array.from(document.querySelectorAll('.heart-icon'));
+    const visibleHeartIcons = heartIcons.filter(icon => icon.offsetParent !== null);
+    const lastVisibleHeartIcon = visibleHeartIcons[visibleHeartIcons.length - 1];
+    if (lastVisibleHeartIcon) {
+        lastVisibleHeartIcon.remove();
     }
 }
 
 function calculateScore(remainingTime) {
+    let difficulty = localStorage.getItem('selectedDifficulty');
+    let scoreMultiplier = getMultiplier(difficulty);
     const maxTime = 15; // maximum time is 15 seconds
     const maxScore = 100;
-    const score = Math.max(0, maxScore * (remainingTime / maxTime));
+    // Using Max to avoid negative scores
+    const score = Math.max(0, scoreMultiplier * maxScore * (remainingTime / maxTime));
     return Math.round(score);
 }
 
 function updateScore(score) {
-    const scoreElement = document.querySelector('#session-score');
-    const currentScore = parseInt(scoreElement.textContent.split(': ')[1]);
-    const newScore = currentScore + score;
-    scoreElement.textContent = `Score: ${newScore}`;
+    const scoreElements = Array.from(document.querySelectorAll('#session-score'));
+    const visibleScoreElement = scoreElements.find(element => element.offsetParent !== null);
+    if (visibleScoreElement) {
+        const currentScore = parseInt(visibleScoreElement.textContent.split(': ')[1]);
+        const newScore = currentScore + score;
+        visibleScoreElement.textContent = `Score: ${newScore}`;
+    }
+}
+
+function getMultiplier(difficulty) {
+    switch (difficulty) {
+        case 'easy':
+            return 1;
+        case 'medium':
+            return 2;
+        case 'hard':
+            return 3;
+        default:
+            return 1;
+    }
 }

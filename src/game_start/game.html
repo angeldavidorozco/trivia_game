@@ -12,11 +12,20 @@
       <div class="loading-screen">
         <p>LOADING...</p>
       </div>
+      <div class="mobile-stats">
+        <div class="life-box">
+          <img src="../images/heart.png" alt="Heart" class="heart-icon" />
+          <img src="../images/heart.png" alt="Heart" class="heart-icon" />
+          <img src="../images/heart.png" alt="Heart" class="heart-icon" />
+        </div>
+        <div class="info-box">
+          <p id="session-score">Score: 0</p>
+        </div>
+      </div>
       <div class="main-board">
         <div class="question-box">
-          <p id="question">
-          </p>
-          <div id="countdown" class="countdown-bar" data-style="smooth" >
+          <p id="question"></p>
+          <div id="countdown" class="countdown-bar" data-style="smooth">
             <div></div>
           </div>
         </div>
@@ -37,12 +46,14 @@
 
         <div class="info-box">
           <p id="session-score">Score: 0</p>
-          <p id="session-category">Category: </p>
+          <p id="session-category">Category:</p>
         </div>
       </div>
     </div>
-    <a href="../index.html" class="arrow">
-      <img src="../images/arrow.png" alt="Arrow" />
-    </a>
+    <div class="arrow-container">
+      <a href="../index.html" class="arrow">
+        <img src="../images/arrow.png" alt="Arrow" />
+      </a>
+    </div>
   </body>
 </html>
